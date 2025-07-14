@@ -1,0 +1,38 @@
+#################
+## Backend Api - Jun 2024
+## Reach out to Michael Gault if you have any questions. Thanks!
+################
+
+###########################################################
+## Create a user
+###
+## Adds a user to the backend
+###########################################################
+
+POST https://localhost:9000/add-user
+# Provide your credentials here
+Authorization: password123 
+
+{
+    "name": "Harry Potter",
+    "email": "hpotter@hogwarts.edu",
+    "external_id": "xxxHPxxx",
+    "password": "Expect0-Patr0num!",
+    "payment_id": "see-gingots-00c1"
+}
+
+## Response
+// Accepted: code: 200  ;; Body: {"user_id": "...uuid...", "username": "..."}
+// Error:    code: 400  ;; Body: {"error": "..."}
+
+###########################################################
+## Get UserId (from external id)
+###
+## Retrieves a user_id given the external id -- e.g. Source system's system_id
+###########################################################
+
+GET https://localhost:9000/user?external_id=xxxHPxxx
+
+## Response:
+// User Found:     code: 200  ;; Body: {"username": "whiteStag", "user_id": "...uuid...", "active": bool}
+// User Not Found: code: 204  ;; Body: N/A
