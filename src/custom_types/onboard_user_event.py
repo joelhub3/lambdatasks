@@ -9,7 +9,7 @@ class OnboardUserEventRoot(BaseModel):
     first_name: str
     last_name: str
     middle_name: Optional[str] = Field()
-    preferred_username: Optional[str]
+    preferred_username: Optional[str] = Field()
     related_accounts: list[AccountItem] = Field(default_factory=list)
     contact_info: ContactInfo
     payment_id: str
@@ -23,7 +23,7 @@ class AccountItem(BaseModel):
 class ContactInfo(BaseModel):
     preferred_language: Optional[str]
     email: Optional[str]
-    address: Optional[Address] = Field()
+    address: Optional[Address] = Field(default_factory=Address)
     phone: Optional[str]
 
 
